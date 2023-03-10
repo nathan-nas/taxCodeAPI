@@ -13,8 +13,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -42,7 +44,7 @@ public class TaxApiApplication {
         }
         return comList;
     }
-    @GetMapping("/csv")
+    @GetMapping("/download/companies.csv")
     public void downloadCSV(HttpServletResponse response,@RequestParam String date, @RequestParam int page) throws IOException{
         response.setContentType("text/csv");
         response.setHeader("Content-Disposition", "attachment; file=customers.csv");
