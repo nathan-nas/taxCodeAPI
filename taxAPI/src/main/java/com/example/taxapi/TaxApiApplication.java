@@ -71,20 +71,14 @@ public class TaxApiApplication {
 			throw new RuntimeException(e);
 		}
 		Company temp = new Company();
-		System.out.print("https://hosocongty.vn/"+link+",");
 		temp.setLink("https://hosocongty.vn/"+link);
-		System.out.print(profile.select("h1").text()+",");
 		temp.setTen(profile.select("h1").text());
 		Elements li = profile.select("li");
 		for(int j = 3; j < 11; j++) {
 			Element el = li.get(j);
-			if(!el.text().contains("Địa chỉ thuế") && !el.text().contains("Điện thoại")
-					&& !el.text().contains("Ngày cấp") && !el.text().contains("Ngành nghề chính")
-					&& !el.text().contains("Mã số thuế") && !el.text().contains("Đại diện pháp luật")) continue;
 			if(el.text().contains("Địa chỉ thuế")) {
 				String diachi[] = el.text().split(", ");
 				String tp = diachi[diachi.length-1];
-				System.out.print(tp+",");
 				temp.setDiaChi(tp);
 				continue;
 			}
@@ -108,9 +102,7 @@ public class TaxApiApplication {
 				String str[] = el.text().split(":");
 				temp.setDaiDien(str[str.length-1]);
 			}
-			System.out.print(el.text().replace(",","-")+",");
 		}
-		System.out.println("\n");
 		return temp;
 	}
 }
