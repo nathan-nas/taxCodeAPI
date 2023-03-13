@@ -5,7 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="88580423-b2bd-475e-9bc6-cada0cb689ba" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_virtuald_curvesapi_1_06.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_zaxxer_SparseBitSet_1_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_codec_commons_codec_1_15.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_collections4_4_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_compress_1_19.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_math3_3_6_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_poi_poi_4_1_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_poi_poi_ooxml_4_1_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_poi_poi_ooxml_schemas_4_1_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_xmlbeans_xmlbeans_3_1_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_modelmapper_modelmapper_3_1_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/taxAPI/src/main/java/com/example/taxapi/ExcelService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/taxAPI/src/main/java/com/example/taxapi/ResourceDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taxAPI/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/taxAPI/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/taxAPI/src/main/java/com/example/taxapi/TaxApiApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/taxAPI/src/main/java/com/example/taxapi/TaxApiApplication.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -48,17 +63,21 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/84919/Documents/GitHub/TitanBackend",
+    "last_opened_file_path": "C:/Users/84919/Documents/untitled",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices",
     "spring.configuration.checksum": "6c961c7470e6c7b7e93889fb79aad6ee",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.example.taxapi" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.example.taxapi" />
     </key>
@@ -90,7 +109,9 @@
       <workItem from="1678438074666" duration="116000" />
       <workItem from="1678438245085" duration="188000" />
       <workItem from="1678438450744" duration="2998000" />
-      <workItem from="1678442736230" duration="4450000" />
+      <workItem from="1678442736230" duration="5176000" />
+      <workItem from="1678498668723" duration="691000" />
+      <workItem from="1678668616299" duration="6926000" />
     </task>
     <servers />
   </component>

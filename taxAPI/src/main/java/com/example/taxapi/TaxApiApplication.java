@@ -1,24 +1,25 @@
 package com.example.taxapi;
 
-import jakarta.servlet.http.HttpServletResponse;
-import org.apache.commons.csv.CSVFormat;
-import org.apache.commons.csv.CSVPrinter;
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.BufferedWriter;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.nio.file.Files;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -44,17 +45,27 @@ public class TaxApiApplication {
         }
         return comList;
     }
-    @GetMapping("/download/companies.csv")
-    public void downloadCSV(HttpServletResponse response,@RequestParam String date, @RequestParam int page) throws IOException{
-        response.setContentType("text/csv");
-        response.setHeader("Content-Disposition", "attachment; file=customers.csv");
+    @Autowired
+    private ExcelService excelService;
+    @GetMapping("export")
+    public ResponseEntity<Resource> exportData(@RequestParam String date, @RequestParam int page){
         ArrayList<String> resLinks = new ArrayList<>();
         ArrayList<Company> comList = new ArrayList<>();
         getLinks(date, page, resLinks);
         for (String link : resLinks) {
             comList.add(getInfo(link));
         }
-        writeDataToCSV(response.getWriter(),comList);
+
+        ResourceDTO resourceDTO = excelService.export(comList);
+
+        HttpHeaders httpHeaders=new HttpHeaders();
+        httpHeaders.add("Content-Disposition",
+                "attachment; filename="+"User.xlsx");
+
+        return ResponseEntity.ok()
+                .contentType(resourceDTO.getMediaType())
+                .headers(httpHeaders)
+                .body(resourceDTO.getResource());
     }
     static void getLinks(String date, int pageNum, ArrayList resLinks) {
         Document doc = null;
@@ -118,30 +129,7 @@ public class TaxApiApplication {
         }
         return temp;
     }
-    static void writeDataToCSV(PrintWriter writer, List<Company> companyList) {
-        try (
-                CSVPrinter csvPrinter = new CSVPrinter(writer, CSVFormat.DEFAULT
-                        .withHeader("Link", "Mã Số Thuế", "Tên", "Số Điện Thoại", "Đại Diện", "Địa Chỉ", "Ngày Cấp", "Ngành Nghề Chính"));
-        ) {
-            for (Company company : companyList) {
-                List<String> data = Arrays.asList(
-                        company.getLink(),
-                        company.getTaxCode(),
-                        company.getTen(),
-                        company.getdThoai(),
-                        company.getDaiDien(),
-                        company.getDiaChi(),
-                        company.getNgayCap(),
-                        company.getNganhNgheChinh()
-                );
 
-                csvPrinter.printRecord(data);
-            }
-            csvPrinter.flush();
-        } catch (Exception e) {
-            System.out.println("Writing CSV error!");
-            e.printStackTrace();
-        }
-    }
+
 }
 
